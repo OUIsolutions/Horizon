@@ -1,4 +1,5 @@
 test.c
 pattern
 src/imports
+wrappers/deps
 dependencies

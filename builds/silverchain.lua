@@ -14,7 +14,18 @@ function silver_chain_organize()
             "fdefine"
 
     }})
-    
+    darwin.silverchain.generate({
+        src = "wrappers",
+        project_short_cut = PROJECT_NAME,
+        tags = { 
+------------------DECLARATIONS
+            "fdeclare", 
+------------------IMPLEMENTATIONS
+            "fdefine"
+
+    }})
+
+
 end 
 
 darwin.add_recipe({
