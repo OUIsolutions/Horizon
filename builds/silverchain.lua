@@ -9,9 +9,9 @@ function silver_chain_organize()
 ------------------DECLARATIONS-------------------------------------------
             "typedef",
             "macro",
+            "global",
             "fdeclare", 
 ------------------IMPLEMENTATIONS-------------------------------------------
-            "global",
             "struct", 
             "fdefine"
 

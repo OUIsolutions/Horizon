@@ -1,6 +1,6 @@
 //silver_chain_scope_start
 //mannaged by silver chain: https://github.com/OUIsolutions/SilverChain
-#include "../../src/imports/imports.global.h"
+#include "../../src/imports/imports.fdeclare.h"
 //silver_chain_scope_end
 
 #if !defined(horizon_main_ctxt_implementation)
