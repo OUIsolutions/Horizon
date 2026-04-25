@@ -1,0 +1,20 @@
+//silver_chain_scope_start
+//mannaged by silver chain: https://github.com/OUIsolutions/SilverChain
+#include "../../../wrappers/BearHttpsClient/imports/imports.depdeclare.h"
+//silver_chain_scope_end
+
+#if !defined(horizondeps_httpclient_response_get_header_key_by_index_ctxt_implementation)
+#define horizondeps_httpclient_response_get_header_key_by_index_ctxt_implementation
+const char *horizondeps_httpclient_response_get_header_key_by_index_ctxt(void *ctxt, void *response, int index) {
+    BearHttpsResponse *resp = (BearHttpsResponse *)response;
+    return BearHttpsResponse_get_header_key_by_index(resp, index);
+}
+#endif
+
+#if !defined(horizondeps_httpclient_response_get_header_key_by_index_implementation)
+#define horizondeps_httpclient_response_get_header_key_by_index_implementation
+const char *horizondeps_httpclient_response_get_header_key_by_index(void *response, int index) {
+    BearHttpsResponse *resp = (BearHttpsResponse *)response;
+    return BearHttpsResponse_get_header_key_by_index(resp, index);
+}
+#endif
