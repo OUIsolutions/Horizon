@@ -1,159 +1,169 @@
+#if !defined(horizondeps_request_typedef)
+#define horizondeps_request_typedef
+typedef struct horizondeps_request horizondeps_request;
+#endif
+
+#if !defined(horizondeps_response_typedef)
+#define horizondeps_response_typedef
+typedef struct horizondeps_response horizondeps_response;
+#endif
+
 #if !defined(horizondeps_httpclient_new_ctxt_prototype)
 #define horizondeps_httpclient_new_ctxt_prototype
-void *horizondeps_httpclient_new_ctxt(void *ctxt, const char *url);
+horizondeps_request *horizondeps_httpclient_new_ctxt(void *ctxt, const char *url);
 #endif
 
 #if !defined(horizondeps_httpclient_new_prototype)
 #define horizondeps_httpclient_new_prototype
-void *horizondeps_httpclient_new(const char *url);
+horizondeps_request *horizondeps_httpclient_new(const char *url);
 #endif
 
 #if !defined(horizondeps_httpclient_set_method_ctxt_prototype)
 #define horizondeps_httpclient_set_method_ctxt_prototype
-void horizondeps_httpclient_set_method_ctxt(void *ctxt, void *client, const char *method);
+void horizondeps_httpclient_set_method_ctxt(void *ctxt, horizondeps_request *client, const char *method);
 #endif
 
 #if !defined(horizondeps_httpclient_set_method_prototype)
 #define horizondeps_httpclient_set_method_prototype
-void horizondeps_httpclient_set_method(void *client, const char *method);
+void horizondeps_httpclient_set_method(horizondeps_request *client, const char *method);
 #endif
 
 #if !defined(horizondeps_httpclient_set_max_redirections_ctxt_prototype)
 #define horizondeps_httpclient_set_max_redirections_ctxt_prototype
-void horizondeps_httpclient_set_max_redirections_ctxt(void *ctxt, void *client, int max_redirections);
+void horizondeps_httpclient_set_max_redirections_ctxt(void *ctxt, horizondeps_request *client, int max_redirections);
 #endif
 
 #if !defined(horizondeps_httpclient_set_max_redirections_prototype)
 #define horizondeps_httpclient_set_max_redirections_prototype
-void horizondeps_httpclient_set_max_redirections(void *client, int max_redirections);
+void horizondeps_httpclient_set_max_redirections(horizondeps_request *client, int max_redirections);
 #endif
 
 #if !defined(horizondeps_httpclient_fetch_ctxt_prototype)
 #define horizondeps_httpclient_fetch_ctxt_prototype
-void *horizondeps_httpclient_fetch_ctxt(void *ctxt, void *client);
+horizondeps_response *horizondeps_httpclient_fetch_ctxt(void *ctxt, horizondeps_request *client);
 #endif
 
 #if !defined(horizondeps_httpclient_fetch_prototype)
 #define horizondeps_httpclient_fetch_prototype
-void *horizondeps_httpclient_fetch(void *client);
+horizondeps_response *horizondeps_httpclient_fetch(horizondeps_request *client);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_status_code_ctxt_prototype)
 #define horizondeps_httpclient_response_get_status_code_ctxt_prototype
-int horizondeps_httpclient_response_get_status_code_ctxt(void *ctxt, void *response);
+int horizondeps_httpclient_response_get_status_code_ctxt(void *ctxt, horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_status_code_prototype)
 #define horizondeps_httpclient_response_get_status_code_prototype
-int horizondeps_httpclient_response_get_status_code(void *response);
+int horizondeps_httpclient_response_get_status_code(horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_read_body_ctxt_prototype)
 #define horizondeps_httpclient_response_read_body_ctxt_prototype
-const unsigned char *horizondeps_httpclient_response_read_body_ctxt(void *ctxt, void *response, long *size);
+const unsigned char *horizondeps_httpclient_response_read_body_ctxt(void *ctxt, horizondeps_response *response, long *size);
 #endif
 
 #if !defined(horizondeps_httpclient_response_read_body_prototype)
 #define horizondeps_httpclient_response_read_body_prototype
-const unsigned char *horizondeps_httpclient_response_read_body(void *response, long *size);
+const unsigned char *horizondeps_httpclient_response_read_body(horizondeps_response *response, long *size);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_body_size_ctxt_prototype)
 #define horizondeps_httpclient_response_get_body_size_ctxt_prototype
-long horizondeps_httpclient_response_get_body_size_ctxt(void *ctxt, void *response);
+long horizondeps_httpclient_response_get_body_size_ctxt(void *ctxt, horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_body_size_prototype)
 #define horizondeps_httpclient_response_get_body_size_prototype
-long horizondeps_httpclient_response_get_body_size(void *response);
+long horizondeps_httpclient_response_get_body_size(horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_size_ctxt_prototype)
 #define horizondeps_httpclient_response_get_header_size_ctxt_prototype
-int horizondeps_httpclient_response_get_header_size_ctxt(void *ctxt, void *response);
+int horizondeps_httpclient_response_get_header_size_ctxt(void *ctxt, horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_size_prototype)
 #define horizondeps_httpclient_response_get_header_size_prototype
-int horizondeps_httpclient_response_get_header_size(void *response);
+int horizondeps_httpclient_response_get_header_size(horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_count_ctxt_prototype)
 #define horizondeps_httpclient_response_get_header_count_ctxt_prototype
-int horizondeps_httpclient_response_get_header_count_ctxt(void *ctxt, void *response);
+int horizondeps_httpclient_response_get_header_count_ctxt(void *ctxt, horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_count_prototype)
 #define horizondeps_httpclient_response_get_header_count_prototype
-int horizondeps_httpclient_response_get_header_count(void *response);
+int horizondeps_httpclient_response_get_header_count(horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_set_header_ctxt_prototype)
 #define horizondeps_httpclient_set_header_ctxt_prototype
-void horizondeps_httpclient_set_header_ctxt(void *ctxt, void *client, const char *key, const char *value);
+void horizondeps_httpclient_set_header_ctxt(void *ctxt, horizondeps_request *client, const char *key, const char *value);
 #endif
 
 #if !defined(horizondeps_httpclient_set_header_prototype)
 #define horizondeps_httpclient_set_header_prototype
-void horizondeps_httpclient_set_header(void *client, const char *key, const char *value);
+void horizondeps_httpclient_set_header(horizondeps_request *client, const char *key, const char *value);
 #endif
 
 #if !defined(horizondeps_httpclient_set_body_ctxt_prototype)
 #define horizondeps_httpclient_set_body_ctxt_prototype
-void horizondeps_httpclient_set_body_ctxt(void *ctxt, void *client, unsigned char *content, long size);
+void horizondeps_httpclient_set_body_ctxt(void *ctxt, horizondeps_request *client, unsigned char *content, long size);
 #endif
 
 #if !defined(horizondeps_httpclient_set_body_prototype)
 #define horizondeps_httpclient_set_body_prototype
-void horizondeps_httpclient_set_body(void *client, unsigned char *content, long size);
+void horizondeps_httpclient_set_body(horizondeps_request *client, unsigned char *content, long size);
 #endif
 
 #if !defined(horizondeps_httpclient_free_ctxt_prototype)
 #define horizondeps_httpclient_free_ctxt_prototype
-void horizondeps_httpclient_free_ctxt(void *ctxt, void *client);
+void horizondeps_httpclient_free_ctxt(void *ctxt, horizondeps_request *client);
 #endif
 
 #if !defined(horizondeps_httpclient_free_prototype)
 #define horizondeps_httpclient_free_prototype
-void horizondeps_httpclient_free(void *client);
+void horizondeps_httpclient_free(horizondeps_request *client);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_value_by_key_ctxt_prototype)
 #define horizondeps_httpclient_response_get_header_value_by_key_ctxt_prototype
-const char *horizondeps_httpclient_response_get_header_value_by_key_ctxt(void *ctxt, void *response, const char *key);
+const char *horizondeps_httpclient_response_get_header_value_by_key_ctxt(void *ctxt, horizondeps_response *response, const char *key);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_value_by_key_prototype)
 #define horizondeps_httpclient_response_get_header_value_by_key_prototype
-const char *horizondeps_httpclient_response_get_header_value_by_key(void *response, const char *key);
+const char *horizondeps_httpclient_response_get_header_value_by_key(horizondeps_response *response, const char *key);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_key_by_index_ctxt_prototype)
 #define horizondeps_httpclient_response_get_header_key_by_index_ctxt_prototype
-const char *horizondeps_httpclient_response_get_header_key_by_index_ctxt(void *ctxt, void *response, int index);
+const char *horizondeps_httpclient_response_get_header_key_by_index_ctxt(void *ctxt, horizondeps_response *response, int index);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_key_by_index_prototype)
 #define horizondeps_httpclient_response_get_header_key_by_index_prototype
-const char *horizondeps_httpclient_response_get_header_key_by_index(void *response, int index);
+const char *horizondeps_httpclient_response_get_header_key_by_index(horizondeps_response *response, int index);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_value_by_index_ctxt_prototype)
 #define horizondeps_httpclient_response_get_header_value_by_index_ctxt_prototype
-const char *horizondeps_httpclient_response_get_header_value_by_index_ctxt(void *ctxt, void *response, int index);
+const char *horizondeps_httpclient_response_get_header_value_by_index_ctxt(void *ctxt, horizondeps_response *response, int index);
 #endif
 
 #if !defined(horizondeps_httpclient_response_get_header_value_by_index_prototype)
 #define horizondeps_httpclient_response_get_header_value_by_index_prototype
-const char *horizondeps_httpclient_response_get_header_value_by_index(void *response, int index);
+const char *horizondeps_httpclient_response_get_header_value_by_index(horizondeps_response *response, int index);
 #endif
 
 #if !defined(horizondeps_httpclient_response_free_ctxt_prototype)
 #define horizondeps_httpclient_response_free_ctxt_prototype
-void horizondeps_httpclient_response_free_ctxt(void *ctxt, void *response);
+void horizondeps_httpclient_response_free_ctxt(void *ctxt, horizondeps_response *response);
 #endif
 
 #if !defined(horizondeps_httpclient_response_free_prototype)
 #define horizondeps_httpclient_response_free_prototype
-void horizondeps_httpclient_response_free(void *response);
+void horizondeps_httpclient_response_free(horizondeps_response *response);
 #endif

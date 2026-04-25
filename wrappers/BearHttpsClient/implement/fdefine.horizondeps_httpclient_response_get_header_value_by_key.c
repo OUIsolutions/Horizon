@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_response_get_header_value_by_key_ctxt_implementation)
 #define horizondeps_httpclient_response_get_header_value_by_key_ctxt_implementation
-const char *horizondeps_httpclient_response_get_header_value_by_key_ctxt(void *ctxt, void *response, const char *key) {
+const char *horizondeps_httpclient_response_get_header_value_by_key_ctxt(void *ctxt, horizondeps_response *response, const char *key) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     return BearHttpsResponse_get_header_value_by_key(resp, key);
 }
@@ -13,7 +13,7 @@ const char *horizondeps_httpclient_response_get_header_value_by_key_ctxt(void *c
 
 #if !defined(horizondeps_httpclient_response_get_header_value_by_key_implementation)
 #define horizondeps_httpclient_response_get_header_value_by_key_implementation
-const char *horizondeps_httpclient_response_get_header_value_by_key(void *response, const char *key) {
+const char *horizondeps_httpclient_response_get_header_value_by_key(horizondeps_response *response, const char *key) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     return BearHttpsResponse_get_header_value_by_key(resp, key);
 }

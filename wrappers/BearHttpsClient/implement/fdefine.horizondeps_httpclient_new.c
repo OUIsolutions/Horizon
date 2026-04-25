@@ -5,14 +5,14 @@
 
 #if !defined(horizondeps_httpclient_new_ctxt_implementation)
 #define horizondeps_httpclient_new_ctxt_implementation
-void *horizondeps_httpclient_new_ctxt(void *ctxt, const char *url) {
-    return (void *)newBearHttpsRequest(url);
+horizondeps_request *horizondeps_httpclient_new_ctxt(void *ctxt, const char *url) {
+    return (horizondeps_request *)newBearHttpsRequest(url);
 }
 #endif
 
 #if !defined(horizondeps_httpclient_new_implementation)
 #define horizondeps_httpclient_new_implementation
-void *horizondeps_httpclient_new(const char *url) {
-    return (void *)newBearHttpsRequest(url);
+horizondeps_request *horizondeps_httpclient_new(const char *url) {
+    return (horizondeps_request *)newBearHttpsRequest(url);
 }
 #endif

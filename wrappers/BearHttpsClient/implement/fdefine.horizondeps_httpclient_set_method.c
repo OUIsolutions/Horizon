@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_set_method_ctxt_implementation)
 #define horizondeps_httpclient_set_method_ctxt_implementation
-void horizondeps_httpclient_set_method_ctxt(void *ctxt, void *client, const char *method) {
+void horizondeps_httpclient_set_method_ctxt(void *ctxt, horizondeps_request *client, const char *method) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     BearHttpsRequest_set_method(request, method);
 }
@@ -13,7 +13,7 @@ void horizondeps_httpclient_set_method_ctxt(void *ctxt, void *client, const char
 
 #if !defined(horizondeps_httpclient_set_method_implementation)
 #define horizondeps_httpclient_set_method_implementation
-void horizondeps_httpclient_set_method(void *client, const char *method) {
+void horizondeps_httpclient_set_method(horizondeps_request *client, const char *method) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     BearHttpsRequest_set_method(request, method);
 }

@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_response_get_status_code_ctxt_implementation)
 #define horizondeps_httpclient_response_get_status_code_ctxt_implementation
-int horizondeps_httpclient_response_get_status_code_ctxt(void *ctxt, void *response) {
+int horizondeps_httpclient_response_get_status_code_ctxt(void *ctxt, horizondeps_response *response) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     return BearHttpsResponse_get_status_code(resp);
 }
@@ -13,7 +13,7 @@ int horizondeps_httpclient_response_get_status_code_ctxt(void *ctxt, void *respo
 
 #if !defined(horizondeps_httpclient_response_get_status_code_implementation)
 #define horizondeps_httpclient_response_get_status_code_implementation
-int horizondeps_httpclient_response_get_status_code(void *response) {
+int horizondeps_httpclient_response_get_status_code(horizondeps_response *response) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     return BearHttpsResponse_get_status_code(resp);
 }

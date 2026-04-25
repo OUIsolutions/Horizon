@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_free_ctxt_implementation)
 #define horizondeps_httpclient_free_ctxt_implementation
-void horizondeps_httpclient_free_ctxt(void *ctxt, void *client) {
+void horizondeps_httpclient_free_ctxt(void *ctxt, horizondeps_request *client) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     BearHttpsRequest_free(request);
 }
@@ -13,7 +13,7 @@ void horizondeps_httpclient_free_ctxt(void *ctxt, void *client) {
 
 #if !defined(horizondeps_httpclient_free_implementation)
 #define horizondeps_httpclient_free_implementation
-void horizondeps_httpclient_free(void *client) {
+void horizondeps_httpclient_free(horizondeps_request *client) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     BearHttpsRequest_free(request);
 }

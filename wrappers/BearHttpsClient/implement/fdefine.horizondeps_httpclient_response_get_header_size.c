@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_response_get_header_size_ctxt_implementation)
 #define horizondeps_httpclient_response_get_header_size_ctxt_implementation
-int horizondeps_httpclient_response_get_header_size_ctxt(void *ctxt, void *response) {
+int horizondeps_httpclient_response_get_header_size_ctxt(void *ctxt, horizondeps_response *response) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     return BearHttpsResponse_get_headers_size(resp);
 }
@@ -13,7 +13,7 @@ int horizondeps_httpclient_response_get_header_size_ctxt(void *ctxt, void *respo
 
 #if !defined(horizondeps_httpclient_response_get_header_size_implementation)
 #define horizondeps_httpclient_response_get_header_size_implementation
-int horizondeps_httpclient_response_get_header_size(void *response) {
+int horizondeps_httpclient_response_get_header_size(horizondeps_response *response) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     return BearHttpsResponse_get_headers_size(resp);
 }

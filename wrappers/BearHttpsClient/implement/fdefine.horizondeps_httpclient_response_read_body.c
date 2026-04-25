@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_response_read_body_ctxt_implementation)
 #define horizondeps_httpclient_response_read_body_ctxt_implementation
-const unsigned char *horizondeps_httpclient_response_read_body_ctxt(void *ctxt, void *response, long *size) {
+const unsigned char *horizondeps_httpclient_response_read_body_ctxt(void *ctxt, horizondeps_response *response, long *size) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     const unsigned char *body = BearHttpsResponse_read_body(resp);
     *size = BearHttpsResponse_get_body_size(resp);
@@ -15,7 +15,7 @@ const unsigned char *horizondeps_httpclient_response_read_body_ctxt(void *ctxt, 
 
 #if !defined(horizondeps_httpclient_response_read_body_implementation)
 #define horizondeps_httpclient_response_read_body_implementation
-const unsigned char *horizondeps_httpclient_response_read_body(void *response, long *size) {
+const unsigned char *horizondeps_httpclient_response_read_body(horizondeps_response *response, long *size) {
     BearHttpsResponse *resp = (BearHttpsResponse *)response;
     const unsigned char *body = BearHttpsResponse_read_body(resp);
     *size = BearHttpsResponse_get_body_size(resp);

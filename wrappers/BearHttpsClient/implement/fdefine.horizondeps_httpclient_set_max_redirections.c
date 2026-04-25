@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_set_max_redirections_ctxt_implementation)
 #define horizondeps_httpclient_set_max_redirections_ctxt_implementation
-void horizondeps_httpclient_set_max_redirections_ctxt(void *ctxt, void *client, int max_redirections) {
+void horizondeps_httpclient_set_max_redirections_ctxt(void *ctxt, horizondeps_request *client, int max_redirections) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     request->max_redirections = max_redirections;
 }
@@ -13,7 +13,7 @@ void horizondeps_httpclient_set_max_redirections_ctxt(void *ctxt, void *client, 
 
 #if !defined(horizondeps_httpclient_set_max_redirections_implementation)
 #define horizondeps_httpclient_set_max_redirections_implementation
-void horizondeps_httpclient_set_max_redirections(void *client, int max_redirections) {
+void horizondeps_httpclient_set_max_redirections(horizondeps_request *client, int max_redirections) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     request->max_redirections = max_redirections;
 }

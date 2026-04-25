@@ -5,7 +5,7 @@
 
 #if !defined(horizondeps_httpclient_set_header_ctxt_implementation)
 #define horizondeps_httpclient_set_header_ctxt_implementation
-void horizondeps_httpclient_set_header_ctxt(void *ctxt, void *client, const char *key, const char *value) {
+void horizondeps_httpclient_set_header_ctxt(void *ctxt, horizondeps_request *client, const char *key, const char *value) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     BearHttpsRequest_add_header(request, key, value);
 }
@@ -13,7 +13,7 @@ void horizondeps_httpclient_set_header_ctxt(void *ctxt, void *client, const char
 
 #if !defined(horizondeps_httpclient_set_header_implementation)
 #define horizondeps_httpclient_set_header_implementation
-void horizondeps_httpclient_set_header(void *client, const char *key, const char *value) {
+void horizondeps_httpclient_set_header(horizondeps_request *client, const char *key, const char *value) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
     BearHttpsRequest_add_header(request, key, value);
 }

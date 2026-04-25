@@ -5,16 +5,16 @@
 
 #if !defined(horizondeps_httpclient_fetch_ctxt_implementation)
 #define horizondeps_httpclient_fetch_ctxt_implementation
-void *horizondeps_httpclient_fetch_ctxt(void *ctxt, void *client) {
+horizondeps_response *horizondeps_httpclient_fetch_ctxt(void *ctxt, horizondeps_request *client) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
-    return (void *)BearHttpsRequest_fetch(request);
+    return (horizondeps_response *)BearHttpsRequest_fetch(request);
 }
 #endif
 
 #if !defined(horizondeps_httpclient_fetch_implementation)
 #define horizondeps_httpclient_fetch_implementation
-void *horizondeps_httpclient_fetch(void *client) {
+horizondeps_response *horizondeps_httpclient_fetch(horizondeps_request *client) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
-    return (void *)BearHttpsRequest_fetch(request);
+    return (horizondeps_response *)BearHttpsRequest_fetch(request);
 }
 #endif
