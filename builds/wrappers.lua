@@ -1,6 +1,7 @@
 
 function Build_wrapper(wrapper_name)
-
+    darwin.dtw.remove_any("src/deps")
+    
     darwin.silverchain.generate({
         src = "wrappers/" .. wrapper_name,
         project_short_cut = PROJECT_NAME.."_"..wrapper_name,
