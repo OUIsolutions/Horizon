@@ -21,7 +21,7 @@ Outputs generated:
 
 
 ## Ctx Pattern
-each function should have two versions: one with context (default, with ctxt parameter) and one without context, the function without context should call the function with context, passing the context of the current thread as the context parameter.
+each function should have two versions: one with context (default, with ctxt parameter) and one without context, the function without context should always call the function with context, passing the context of the current thread as the context parameter.
 
 example:
 ```c
