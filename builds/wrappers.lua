@@ -24,7 +24,6 @@ function Build_wrapper(wrapper_name)
     local headers_pure = darwin.camalgamator.generate_amalgamation(
         "wrappers/" .. wrapper_name .. "/imports/imports.fdeclare.h"
     )
-    headers_pure = string.gsub(headers_pure, "PROJECT_NAME", PROJECT_NAME)
     darwin.dtw.write_file("src/deps/fdeclare." .. wrapper_name .. ".h", headers_pure)
 
 

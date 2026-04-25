@@ -3,11 +3,11 @@
 #include "../../../wrappers/httpsclient/imports/imports.depdeclare.h"
 //silver_chain_scope_end
 
-#if !defined(horizondeps_httpclient_fetch_ctxt_implementation)
-#define horizondeps_httpclient_fetch_ctxt_implementation
-horizondeps_response *horizondeps_httpclient_fetch_ctxt(void *ctxt, horizondeps_request *client) {
+#if !defined(PROJECT_NAMEdeps_httpclient_fetch_ctxt_implementation)
+#define PROJECT_NAMEdeps_httpclient_fetch_ctxt_implementation
+PROJECT_NAMEdeps_response *PROJECT_NAMEdeps_httpclient_fetch_ctxt(void *ctxt, PROJECT_NAMEdeps_request *client) {
     BearHttpsRequest *request = (BearHttpsRequest *)client;
-    return (horizondeps_response *)BearHttpsRequest_fetch(request);
+    return (PROJECT_NAMEdeps_response *)BearHttpsRequest_fetch(request);
 }
 #endif
 
