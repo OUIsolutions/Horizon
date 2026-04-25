@@ -11,10 +11,3 @@ int horizondeps_httpclient_response_get_status_code_ctxt(void *ctxt, horizondeps
 }
 #endif
 
-#if !defined(horizondeps_httpclient_response_get_status_code_implementation)
-#define horizondeps_httpclient_response_get_status_code_implementation
-int horizondeps_httpclient_response_get_status_code(horizondeps_response *response) {
-    BearHttpsResponse *resp = (BearHttpsResponse *)response;
-    return BearHttpsResponse_get_status_code(resp);
-}
-#endif

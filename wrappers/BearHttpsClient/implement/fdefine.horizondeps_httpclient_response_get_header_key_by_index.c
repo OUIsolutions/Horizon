@@ -11,10 +11,3 @@ const char *horizondeps_httpclient_response_get_header_key_by_index_ctxt(void *c
 }
 #endif
 
-#if !defined(horizondeps_httpclient_response_get_header_key_by_index_implementation)
-#define horizondeps_httpclient_response_get_header_key_by_index_implementation
-const char *horizondeps_httpclient_response_get_header_key_by_index(horizondeps_response *response, int index) {
-    BearHttpsResponse *resp = (BearHttpsResponse *)response;
-    return BearHttpsResponse_get_header_key_by_index(resp, index);
-}
-#endif

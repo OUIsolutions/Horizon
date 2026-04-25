@@ -11,10 +11,3 @@ void horizondeps_httpclient_set_header_ctxt(void *ctxt, horizondeps_request *cli
 }
 #endif
 
-#if !defined(horizondeps_httpclient_set_header_implementation)
-#define horizondeps_httpclient_set_header_implementation
-void horizondeps_httpclient_set_header(horizondeps_request *client, const char *key, const char *value) {
-    BearHttpsRequest *request = (BearHttpsRequest *)client;
-    BearHttpsRequest_add_header(request, key, value);
-}
-#endif

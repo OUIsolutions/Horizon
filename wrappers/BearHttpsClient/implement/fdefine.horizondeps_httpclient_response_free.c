@@ -11,10 +11,3 @@ void horizondeps_httpclient_response_free_ctxt(void *ctxt, horizondeps_response 
 }
 #endif
 
-#if !defined(horizondeps_httpclient_response_free_implementation)
-#define horizondeps_httpclient_response_free_implementation
-void horizondeps_httpclient_response_free(horizondeps_response *response) {
-    BearHttpsResponse *resp = (BearHttpsResponse *)response;
-    BearHttpsResponse_free(resp);
-}
-#endif

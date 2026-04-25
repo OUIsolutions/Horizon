@@ -11,10 +11,3 @@ void horizondeps_httpclient_free_ctxt(void *ctxt, horizondeps_request *client) {
 }
 #endif
 
-#if !defined(horizondeps_httpclient_free_implementation)
-#define horizondeps_httpclient_free_implementation
-void horizondeps_httpclient_free(horizondeps_request *client) {
-    BearHttpsRequest *request = (BearHttpsRequest *)client;
-    BearHttpsRequest_free(request);
-}
-#endif

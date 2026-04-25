@@ -11,10 +11,3 @@ void horizondeps_httpclient_set_method_ctxt(void *ctxt, horizondeps_request *cli
 }
 #endif
 
-#if !defined(horizondeps_httpclient_set_method_implementation)
-#define horizondeps_httpclient_set_method_implementation
-void horizondeps_httpclient_set_method(horizondeps_request *client, const char *method) {
-    BearHttpsRequest *request = (BearHttpsRequest *)client;
-    BearHttpsRequest_set_method(request, method);
-}
-#endif

@@ -11,10 +11,3 @@ long horizondeps_httpclient_response_get_body_size_ctxt(void *ctxt, horizondeps_
 }
 #endif
 
-#if !defined(horizondeps_httpclient_response_get_body_size_implementation)
-#define horizondeps_httpclient_response_get_body_size_implementation
-long horizondeps_httpclient_response_get_body_size(horizondeps_response *response) {
-    BearHttpsResponse *resp = (BearHttpsResponse *)response;
-    return (long)BearHttpsResponse_get_body_size(resp);
-}
-#endif

@@ -1,3 +1,5 @@
+#ifndef horizon_BearHttpsClient_fdeclare
+#define horizon_BearHttpsClient_fdeclare
 #if !defined(horizondeps_request_typedef)
 #define horizondeps_request_typedef
 typedef struct horizondeps_request horizondeps_request;
@@ -86,4 +88,6 @@ const char *horizondeps_httpclient_response_get_header_value_by_index_ctxt(void 
 #if !defined(horizondeps_httpclient_response_free_ctxt_prototype)
 #define horizondeps_httpclient_response_free_ctxt_prototype
 void horizondeps_httpclient_response_free_ctxt(void *ctxt, horizondeps_response *response);
+#endif
+
 #endif

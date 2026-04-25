@@ -16,16 +16,3 @@ int horizondeps_printf_ctxt(void *ctxt, const char *fmt, ...){
     return ret;
 }
 #endif
-
-
-
-#if !defined(horizondeps_printf_implementation)
-#define horizondeps_printf_implementation
-int horizondeps_printf(const char *fmt, ...){
-    va_list args;
-    va_start(args, fmt);
-    int ret = vprintf(fmt, args);
-    va_end(args);
-    return ret;
-}
-#endif

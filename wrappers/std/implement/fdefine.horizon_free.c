@@ -9,11 +9,3 @@ void horizondeps_free_ctxt(void *ctxt, void *ptr){
     free(ptr);
 }
 #endif
-
-
-#if !defined(horizondeps_free_implementation)
-#define horizondeps_free_implementation
-void horizondeps_free(void *ptr){
-    free(ptr);
-}
-#endif

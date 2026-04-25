@@ -21,7 +21,7 @@ Outputs generated:
 
 
 ## Ctx Pattern
-each function should have two versions: one with context (default, with ctxt parameter) and one without context, the function without context should always call the function with context, passing the context of the current thread as the context parameter.
+Every function **must** have `void *ctxt` as its first argument. No non-ctx version is allowed.
 
 example:
 ```c
@@ -32,19 +32,13 @@ void * horizondeps_malloc_ctxt(void *ctxt, long size){
     return malloc(size);
 }
 #endif
-#if !defined(horizondeps_malloc_implementation)
-#define horizondeps_malloc_implementation
-void * horizondeps_malloc(long size){
-    return malloc(size);
-}
-#endif
 ```
 
 ## Fragment definition Pattern 
-each function definition (writed in `wrappers/<name>/implement/`) must have a `#if !defined(...` block arround it, the name of the macro must follow the pattern `horizondeps_<function_name>_ctxt_implementation` for the context version and `horizondeps_<function_name>_implementation` for the non-context version.
+each function definition (writed in `wrappers/<name>/implement/`) must have a `#if !defined(...` block arround it, the name of the macro must follow the pattern `horizondeps_<function_name>_ctxt_implementation`.
 
 
 ## Fragment Prototypes Pattern
-each fragment prototype (writed in `wrappers/<name>/fdeclare.prototype.h`) must have a `#if !defined(...` block arround it, the name of the macro must follow the pattern `horizondeps_<function_name>_ctxt_prototype` for the context version and `horizondeps_<function_name>_prototype` for the non-context version.
+each fragment prototype (writed in `wrappers/<name>/fdeclare.prototype.h`) must have a `#if !defined(...` block arround it, the name of the macro must follow the pattern `horizondeps_<function_name>_ctxt_prototype`.
 
 

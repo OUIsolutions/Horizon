@@ -11,10 +11,3 @@ horizondeps_response *horizondeps_httpclient_fetch_ctxt(void *ctxt, horizondeps_
 }
 #endif
 
-#if !defined(horizondeps_httpclient_fetch_implementation)
-#define horizondeps_httpclient_fetch_implementation
-horizondeps_response *horizondeps_httpclient_fetch(horizondeps_request *client) {
-    BearHttpsRequest *request = (BearHttpsRequest *)client;
-    return (horizondeps_response *)BearHttpsRequest_fetch(request);
-}
-#endif

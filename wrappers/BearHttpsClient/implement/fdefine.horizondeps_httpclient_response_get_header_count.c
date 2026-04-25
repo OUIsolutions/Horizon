@@ -11,10 +11,3 @@ int horizondeps_httpclient_response_get_header_count_ctxt(void *ctxt, horizondep
 }
 #endif
 
-#if !defined(horizondeps_httpclient_response_get_header_count_implementation)
-#define horizondeps_httpclient_response_get_header_count_implementation
-int horizondeps_httpclient_response_get_header_count(horizondeps_response *response) {
-    BearHttpsResponse *resp = (BearHttpsResponse *)response;
-    return BearHttpsResponse_get_headers_size(resp);
-}
-#endif
