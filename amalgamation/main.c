@@ -13,9 +13,7 @@ int horizon_main(int argc, char** argv){
 
 
 #include "../src/imports/imports.fdefine.h"
-#include "../wrappers/BearHttpsClient.c"
-#include "../wrappers/CArgvParse.c"
-#include "../wrappers/CWebStudio.c"
-#include "../wrappers/std.c"
+#include "../wrappers/BearHttpsClient/imports/imports.depdefine.h"
+#include "../wrappers/std/imports/imports.depdefine.h"
 
 

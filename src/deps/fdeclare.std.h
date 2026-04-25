@@ -1,3 +1,7 @@
+//silver_chain_scope_start
+//mannaged by silver chain: https://github.com/OUIsolutions/SilverChain
+#include "../imports/imports.global.h"
+//silver_chain_scope_end
 #ifndef horizon_std_fdeclare
 #define horizon_std_fdeclare
 #if !defined(horizondeps_free_ctxt_prototype)

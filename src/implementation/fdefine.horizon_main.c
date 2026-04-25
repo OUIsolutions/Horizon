@@ -6,7 +6,7 @@
 #if !defined(horizon_main_ctxt_implementation)
 #define horizon_main_ctxt_implementation
 int horizon_main_ctxt(void *ctxt, int argc, char** argv){
-    horizondeps_printf(ctxt, "Hello, World!\n");
+    horizondeps_printf_ctxt(ctxt, "Hello, World!\n");
     return 0;
 }
 #endif 
