@@ -157,11 +157,11 @@ long data_size = PROJECT_NAME_bucket_get_data_size(
 );
 ```
 
-| Parameter  | Type               | Description                                |
-|------------|--------------------|--------------------------------------------|
-| `bucket`   | `PROJECT_NAME_bucket *` | Target bucket handle.               |
-| `key`      | `unsigned char *`  | Pointer to the key buffer.                |
-| `key_size` | `long`             | Length of the key buffer in bytes.         |
+| Parameter  | Type                     | Description                                |
+|------------|--------------------------|--------------------------------------------|
+| `bucket`   | `PROJECT_NAME_bucket *`  | Target bucket handle.               |
+| `key`      | `const unsigned char *`  | Pointer to the key buffer.                |
+| `key_size` | `long`                   | Length of the key buffer in bytes.         |
 
 **Returns:** `long` — Size of the stored value in bytes.
 
@@ -222,5 +222,29 @@ while (1) {
 |-------------------------------------------------|----------------------------------------------------------|
 | `PROJECT_NAME_bucket_get_key_size_by_index`     | Returns the byte length of the key at the given index, or `-1` if the index is out of range. |
 | `PROJECT_NAME_bucket_get_key_by_index`          | Copies the key at the given index into the provided buffer. |
+
+
+## Error handling 
+what ever action you do, can result to a error, that can be checked: 
+
+```c 
+// call any function from above, for example: 
+PROJECT_NAME_bucket_write_data(bucket,key, key_sizeq,data, data_size);
+if(PROJECT_NAME_bucket_is_error(bucket)) {
+    const char *msg = PROJECT_NAME_bucket_get_error_message(bucket);
+    int code = PROJECT_NAME_bucket_get_error_code(bucket);
+    printf("Error %d: %s\n", code, msg);
+    PROJECT_NAME_bucket_clear_error(bucket);
+}
+
+
+```
+## Bucket free
+
+when you finish with the bucket, you need to free it:
+
+```c 
+PROJECT_NAME_bucket_free(bucket);
+```
 
 
