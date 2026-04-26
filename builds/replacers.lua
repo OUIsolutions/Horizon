@@ -21,10 +21,10 @@ end
 
 darwin.add_recipe({
     inputs = {
-        "replacers"
+        "internal"
     },
     outs = {},
-    name = "generate-docs",
-    description = "Generate documentation files",
+    name = "replacers",
+    description = "Replace replacers",
     callback = build_docs
 })
