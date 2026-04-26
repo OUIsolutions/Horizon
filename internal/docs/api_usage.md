@@ -14,4 +14,23 @@ PROJECT_NAME_bucket *bucket = PROJECT_NAME_bucket_new( "./local_bucket");
 ```
 
 ## The Bucket Key Value Model
+all data, are stored in a key value mechanism:
+
+```c 
+PROJECT_NAME_bucket_write_data(bucket, key, key_size, data_pointer, data_size);
+```
+you also can write the data, by chunk,where data_index is the index of of the data you want store
+for example, you want to store the data "Hello World", you can do this in one go, or in chunks 
+if its chunk: 
+
+```c 
+unsigned char *data = "Hello World";
+int chunk_size = 3;
+int offset = 0;
+while (offset < strlen(data)) {
+    PROJECT_NAME_bucket_write_data_chunk(bucket, key, key_size,offset, data + offset, chunk_size);
+    offset += chunk_size;
+}
+```
+
 
