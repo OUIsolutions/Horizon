@@ -312,3 +312,103 @@ DELETE /delete-items
   ]
 }
 ```
+## Iterators
+
+### Get database size
+
+```
+GET /database-size
+```
+
+**Headers**
+
+| Header     | Required | Description    |
+|------------|----------|----------------|
+| `password` | Yes      | Root password. |
+
+**Response**
+
+Returns the database size as a plain-text integer.
+
+---
+
+### Get keyhash by index 
+
+```
+GET /keyhash-by-index
+```
+
+**Headers**
+
+| Header     | Required | Description    |
+|------------|----------|----------------|
+| `password` | Yes      | Root password. |
+| `index`    | Yes      | Index of the key hash to retrieve. |
+
+**Response**
+
+Returns the key hash at the specified index.
+
+---
+### Get Multiple keyhashes
+
+return a list of keyhashes between a range of indices.
+
+```
+GET /keyhashes-range
+```
+
+**Headers**
+
+| Header     | Required | Description    |
+|------------|----------|----------------|
+| `password` | Yes      | Root password. |
+| `start`    | Yes      | Start index of the key hashes to retrieve. |
+| `end`      | Yes      | End index of the key hashes to retrieve. |
+
+**Response**
+
+Returns the list of key hashes between the specified indices.
+
+```json
+{
+    "items": [
+        "keyhash_1",
+        "keyhash_2",
+        "keyhash_n"
+    ]
+}
+```
+
+---
+### Get Multiple key-values
+
+Returns a list of key-values between a range of indices.
+
+```
+GET /key-values-range
+```
+
+**Headers**
+
+| Header     | Required | Description    |
+|------------|----------|----------------|
+| `password` | Yes      | Root password. |
+| `start`    | Yes      | Start index of the key hashes to retrieve. |
+| `end`      | Yes      | End index of the key hashes to retrieve. |
+
+**Response**
+
+Returns the list of key-values between the specified indices.
+
+```json
+{
+    "items": [
+        "<key_value>",
+        "<key_value>",
+        "<key_value>"
+    ]
+}
+```
+
+---
