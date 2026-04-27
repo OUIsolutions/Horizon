@@ -1,129 +1,214 @@
-these documentation cover the routes of the project
+# Horizon API Routes Reference
+
+This document describes the HTTP routes exposed by the PROJECT_NAME server. All routes require authentication via request headers unless otherwise noted.
+
+---
+
+## Authentication
+
+Every request must include the following authentication headers:
+
+| Header     | Description                                      |
+|------------|--------------------------------------------------|
+| `password` | The root password configured for the server.     |
+| `keyhash`  | The hashed key identifying the target data item. |
+
+---
+
+## Single-Item Operations
 
 ### Write Item
 
+Stores raw data associated with a given key.
+
+```
 POST /write-data
+```
 
-Headers:
+**Headers**
 
-password: <root_password>
-keyhash: <key_hash>
+| Header     | Required | Description                         |
+|------------|----------|-------------------------------------|
+| `password` | Yes      | Root password.                      |
+| `keyhash`  | Yes      | Key hash of the item to write.      |
 
-Body: 
-<data_to_be_stored>
+**Body**
 
+The raw data to be stored (plain bytes or text).
 
-POST: /write-key-value
+---
 
-Headers:
+### Write Key-Value Item
 
-password: <root_password>
-keyhash: <key_hash>
+Stores a key-value pair associated with a given key.
 
-Body: 
-<key-value>
+```
+POST /write-key-value
+```
 
+**Headers**
 
-### Write Item Chunked
+| Header     | Required | Description                              |
+|------------|----------|------------------------------------------|
+| `password` | Yes      | Root password.                           |
+| `keyhash`  | Yes      | Key hash of the key-value item to write. |
 
+**Body**
+
+The key-value data to be stored.
+
+---
+
+### Write Item (Chunked)
+
+Writes a chunk of data at a specified offset, enabling incremental or resumable uploads.
+
+```
 POST /write-data-chunk
+```
 
-Headers:
+**Headers**
 
-password: <root_password>
-keyhash: <key_hash>
-offset: <offset>
-size: <chunk_size>
+| Header     | Required | Description                                          |
+|------------|----------|------------------------------------------------------|
+| `password` | Yes      | Root password.                                       |
+| `keyhash`  | Yes      | Key hash of the item to write.                       |
+| `offset`   | Yes      | Byte offset at which the chunk should be written.    |
+| `size`     | Yes      | Size of the chunk in bytes.                          |
 
-Body: 
-<data_chunk_to_be_stored>
+**Body**
 
+The binary data chunk to be stored at the specified offset.
+
+---
 
 ### Read Item
 
+Reads a portion of data associated with a given key.
+
+```
 GET /read-data
+```
 
-Headers:
+**Headers**
 
-password: <root_password>
-keyhash: <key_hash>
-offset: <offset>
-size: <size_to_read>
+| Header     | Required | Description                                        |
+|------------|----------|----------------------------------------------------|
+| `password` | Yes      | Root password.                                     |
+| `keyhash`  | Yes      | Key hash of the item to read.                      |
+| `offset`   | Yes      | Byte offset from which to begin reading.           |
+| `size`     | Yes      | Number of bytes to read.                           |
 
+**Response**
 
-## Delete Item
+Returns the raw data slice defined by `offset` and `size`.
 
+---
+
+### Delete Item
+
+Permanently removes the data associated with a given key.
+
+```
 DELETE /delete-data
+```
 
-Headers:
+**Headers**
 
-password: <root_password>
-keyhash: <key_hash>
+| Header     | Required | Description                          |
+|------------|----------|--------------------------------------|
+| `password` | Yes      | Root password.                       |
+| `keyhash`  | Yes      | Key hash of the item to delete.      |
 
-## Write Itens 
+---
 
-POST /write-itens
+## Batch Operations
 
-Headers:
+### Write Multiple Items
 
-password: <root_password>
-body: 
-~~~json
+Writes multiple items in a single request. Each item specifies its own key hash, data format, and payload.
+
+```
+POST /write-items
+```
+
+**Headers**
+
+| Header     | Required | Description    |
+|------------|----------|----------------|
+| `password` | Yes      | Root password. |
+
+**Body**
+
+```json
 {
-"itens":[
+  "items": [
     {
-
-        "keyhash": "<key_hash>",
-        "format":"b64",
-        "data": "<data_to_be_stored>"
+      "keyhash": "<key_hash>",
+      "format": "b64",
+      "data": "<base64_encoded_data>"
     },
     {
-
-        "keyhash": "<key_hash>",
-        "format":"txt",
-        "data": "<data_to_be_stored>"
+      "keyhash": "<key_hash>",
+      "format": "txt",
+      "data": "<plain_text_data>"
     }
-]
-
+  ]
 }
-~~~
+```
 
-## Read Itens
-GET /read-itens
+**Supported Formats**
 
-Headers:
+| Format | Description                  |
+|--------|------------------------------|
+| `b64`  | Base64-encoded binary data.  |
+| `txt`  | Plain UTF-8 text data.       |
 
-password: <root_password>
-body: 
-~~~json
+---
+
+### Read Multiple Items
+
+Retrieves multiple items in a single request by providing a list of key hashes.
+
+```
+GET /read-items
+```
+
+**Headers**
+
+| Header     | Required | Description    |
+|------------|----------|----------------|
+| `password` | Yes      | Root password. |
+
+**Body**
+
+```json
 {
-"itens":[
-    "keyhash_1"
-    "keyhash_2"
+  "items": [
+    "keyhash_1",
+    "keyhash_2",
     "keyhash_n"
-]
-
+  ]
 }
-~~~
+```
 
-it will return this:
+**Response**
 
+Returns each requested item with its key hash, format, and data payload.
 
-~~~json
+```json
 {
-"itens": [
-        {
-            "keyhash": "<key_hash>",
-            "format": "b64",
-            "data": "<data_to_be_stored>"
-        },
-        {
-            "keyhash": "<key_hash>",
-            "format": "txt",
-            "data": "<data_to_be_stored>"
-        }
-    ]
+  "items": [
+    {
+      "keyhash": "<key_hash>",
+      "format": "b64",
+      "data": "<base64_encoded_data>"
+    },
+    {
+      "keyhash": "<key_hash>",
+      "format": "txt",
+      "data": "<plain_text_data>"
+    }
+  ]
 }
-~~~
-
-
+```
